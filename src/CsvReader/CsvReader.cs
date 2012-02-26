@@ -173,8 +173,10 @@ namespace Breeze.Data.Csv {
                         } else {
                             endQuote = true;
                         }
-                    } else if (current.Length > 0)
+                    } else if (sb.Length > 0)
                         throw new CsvParseException("If fields are not enclosed with double quotes, then double quotes may not appear inside the fields");
+                    else
+                        beginQuote = true;
                 } else
                     sb.Append((char)ch);
                 ch = input.Read();
